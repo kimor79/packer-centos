@@ -3,3 +3,9 @@ packer_cache/
 
 # For built boxes
 *.box
+
+# Default output directories
+output-*/
+
+# When testing vagrant after a packer build
+.vagrant/

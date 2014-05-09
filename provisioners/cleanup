@@ -1,0 +1,11 @@
+#!/bin/sh
+
+service rsyslog stop
+service crond stop
+rm -f /etc/ssh/ssh_host_*
+rm -f /tmp/yum.log
+find /var/log/ -type f | while read file; do cat /dev/null > "${file}";done
+rm -f /tmp/*
+find /root/ -mindepth 1 -maxdepth 1 -type d -exec rm -fr {} \;
+find /root/ -type f -exec rm -f {} \;
+history -c

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+yum install -y cloud-init
+
+# Change cloud-init's 'cloud-user' to 'ec2-user' and give it sudo
+sed -i 's/name: cloud-user/name: ec2-user\
+    lock_passwd: True\
+    gecos: Default EC2 User\
+    sudo:\
+      - ALL=(ALL) NOPASSWD: ALL\
+    shell: \/bin\/bash/' /etc/cloud/cloud.cfg

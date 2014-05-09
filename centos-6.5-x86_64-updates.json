@@ -1,0 +1,116 @@
+{
+	"variables": {
+		"build_number": "{{timestamp}}"
+	},
+
+	"builders": [
+		{
+			"boot_command": [
+				"<esc>",
+				"<wait>linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks-6.5-updates.cfg<enter>"
+			],
+			"boot_wait": "5s",
+			"disk_size": 8000,
+			"guest_additions_mode": "disable",
+			"guest_os_type": "RedHat_64",
+			"http_directory": "./http",
+			"iso_checksum": "f21a71e8e31df73297bdd1ccd4a64a36831284bd",
+			"iso_checksum_type": "sha1",
+			"iso_url": "http://centos.mirror.facebook.net/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
+			"name": "vbox4ami",
+			"output_directory": "/tmp/packer-centos-6.5-x86_64-updates-AMI-{{user `build_number`}}",
+			"ssh_password": "root",
+			"ssh_username": "root",
+			"shutdown_command": "shutdown -h now",
+			"type": "virtualbox-iso",
+			"vboxmanage": [
+				[ "modifyvm", "{{.Name}}", "--memory", "1024" ]
+			],
+			"vm_name": "packer-centos-6.5-x86_64-updates-AMI-{{user `build_number`}}"
+		},
+		{
+			"boot_command": [
+				"<esc>",
+				"<wait>linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks-6.5-updates.cfg<enter>"
+			],
+			"boot_wait": "5s",
+			"disk_size": 8000,
+			"guest_os_type": "RedHat_64",
+			"http_directory": "./http",
+			"iso_checksum": "f21a71e8e31df73297bdd1ccd4a64a36831284bd",
+			"iso_checksum_type": "sha1",
+			"iso_url": "http://centos.mirror.facebook.net/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
+			"name": "vbox4vagrant",
+			"output_directory": "/tmp/packer-centos-6.5-x86_64-updates-vagrant-vbox.build-{{user `build_number`}}",
+			"ssh_password": "root",
+			"ssh_username": "root",
+			"shutdown_command": "shutdown -h now",
+			"type": "virtualbox-iso",
+			"vboxmanage": [
+				[ "modifyvm", "{{.Name}}", "--memory", "1024" ]
+			],
+			"vm_name": "packer-centos-6.5-x86_64-updates-vagrant-vbox-{{user `build_number`}}"
+		}
+	],
+
+	"provisioners": [
+		{
+			"script": "provisioners/ifcfg-eth0",
+			"type": "shell"
+		},
+		{
+			"script": "provisioners/ntp",
+			"type": "shell"
+		},
+		{
+			"script": "provisioners/epel",
+			"type": "shell"
+		},
+		{
+			"only": [ "vbox4ami" ],
+			"script": "provisioners/cloud-init",
+			"type": "shell"
+		},
+		{
+			"only": [ "vbox4vagrant" ],
+			"script": "provisioners/vagrant",
+			"type": "shell"
+		},
+		{
+			"script": "provisioners/ssh",
+			"type": "shell"
+		},
+		{
+			"only": [ "vbox4ami" ],
+			"script": "provisioners/grub",
+			"type": "shell"
+		},
+		{
+			"only": [ "vbox4ami" ],
+			"script": "provisioners/fstab",
+			"type": "shell"
+		},
+		{
+			"only": [ "vbox4vagrant" ],
+			"script": "provisioners/virtualbox",
+			"type": "shell"
+		},
+		{
+			"except": [ "vbox4vagrant" ],
+			"script": "provisioners/lock_root",
+			"type": "shell"
+		},
+		{
+			"script": "provisioners/cleanup",
+			"type": "shell"
+		}
+	],
+
+	"post-processors": [
+		{
+			"only": [ "vbox4vagrant" ],
+			"output": "/tmp/packer-centos-6.5-x86_64-updates-vagrant-vbox-{{user `build_number`}}.box",
+			"type": "vagrant"
+		}
+	]
+}

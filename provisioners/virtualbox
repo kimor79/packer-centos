@@ -1,0 +1,13 @@
+#!/bin/sh
+
+yum install -y dkms gcc perl
+
+mkdir /mnt/vboxguest
+mount -t iso9660 -o loop /root/VBoxGuestAdditions.iso /mnt/vboxguest
+
+/mnt/vboxguest/VBoxLinuxAdditions.run
+
+cat /var/log/vboxadd-install.log
+
+umount /mnt/vboxguest
+rm -fr /mnt/vboxguest /root/VBoxGuestAdditions.iso

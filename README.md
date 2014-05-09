@@ -21,3 +21,7 @@ Available builders:
 
   * [vbox4ami](AWS.md) - build an image (from scratch) suitable for AWS
   * [vbox4vagrant](VAGRANT.md) - build a Vagrant box for VirtualBox
+
+Vagrant boxes:
+
+  * https://vagrantcloud.com/igromik/centos-6.5-x86-64-updates

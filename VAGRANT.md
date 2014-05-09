@@ -17,4 +17,4 @@ To build a Vagrant box:
 
 Vagrant boxes:
 
-  * https://vagrantcloud.com/igromik/centos-6.5-x86-64-updates
+  * https://vagrantcloud.com/igromik/centos-6.5-x86_64-updates

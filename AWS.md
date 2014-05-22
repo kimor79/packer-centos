@@ -4,7 +4,7 @@ AWS Specific
 The following have been added to the image (in addition to those listed in in [README.md](README.md)):
 
   * [Cloud-Init](http://cloudinit.readthedocs.org/en/latest/) is installed
-    * The user *ec2-user* will be added with passwordless sudo and authorized_keys based on the AWS keypaird configured at launch time
+    * The user *ec2-user* will be added with passwordless sudo and authorized_keys based on the AWS keypair configured at launch time
   * Root password is locked
 
 To build a AMI (**2014-05-09: WIP**):

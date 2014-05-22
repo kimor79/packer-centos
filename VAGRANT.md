@@ -14,3 +14,7 @@ To build a Vagrant box:
   1. `vagrant box add --force packer-centos-6.5-x86_64-updates-vagrant-vbox /tmp/packer-centos-6.5-x86_64-updates-vagrant-vbox-*.box`
   1. `vagrant up`
   1. Smoke test (e.g., `vagrant ssh` and look around)
+
+Vagrant boxes:
+
+  * https://vagrantcloud.com/igromik/centos-6.5-x86_64-updates

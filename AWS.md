@@ -11,7 +11,7 @@ To build a AMI (**2014-05-09: WIP**):
 
   1. `rm -fr /tmp/packer-centos-6.5-x_86_64-updates-AMI-*`
   1. `packer build --only=vbox4ami centos-6.5-x86_64-updates.json`
-  1. `VBoxManage clonehd /tmp/packer-centos-6.5-AMI/*vmdk /tmp/packer-centos-6.5-x86_64-updates.img --format raw`
+  1. `VBoxManage clonehd /tmp/packer-centos-6.5-x86_64-updates-AMI-*/*.vmdk /tmp/packer-centos-6.5-x86_64-updates.img --format raw`
   1. `ec2-import-volume -f raw [options] /tmp/packer-centos-6.5-x86_64-updates.img`
   1. Launch 2 amzn-linux instances
      1. Stop one, detach drive

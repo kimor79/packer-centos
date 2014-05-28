@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cat > /etc/fstab <<'EOF'
-/dev/xvde1              /                       ext4    defaults        1 1
+/dev/xvda1              /                       ext4    defaults        1 1
 tmpfs                   /dev/shm                tmpfs   defaults        0 0
 devpts                  /dev/pts                devpts  gid=5,mode=620  0 0
 sysfs                   /sys                    sysfs   defaults        0 0

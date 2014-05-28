@@ -4,5 +4,5 @@ sed -i \
 	-e 's/^timeout=/timeout=0/' \
 	-e 's/^splashimage=/#splashimage=/' \
 	-e 's/hd0,0/hd0/g' \
-	-e 's/root=UUID=.* /root=\/dev\/xvde1 /g' \
+	-e 's/root=UUID=.* /root=\/dev\/xvda1 xen_blkfront.sda_is_xvda=1 /g' \
 	/boot/grub/grub.conf

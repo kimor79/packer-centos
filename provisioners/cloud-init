@@ -7,5 +7,5 @@ sed -i 's/name: cloud-user/name: ec2-user\
     lock_passwd: True\
     gecos: Default EC2 User\
     sudo:\
-      - ALL=(ALL) NOPASSWD: ALL\
+      - "ALL=(ALL) NOPASSWD: ALL"\
     shell: \/bin\/bash/' /etc/cloud/cloud.cfg

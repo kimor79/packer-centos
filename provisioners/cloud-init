@@ -2,6 +2,12 @@
 
 yum install -y cloud-init
 
+# 2014-06-02: TODO: Add these to /etc/cloud/cloud.cfg
+#datasource_list: [ Ec2, None ]
+#mounts:
+# - [ ephemeral0, /media/ephemeral0 ]
+# - [ swap, none, swap, sw, "0", "0" ]
+
 # Change cloud-init's 'cloud-user' to 'ec2-user' and give it sudo
 sed -i 's/name: cloud-user/name: ec2-user\
     lock_passwd: True\

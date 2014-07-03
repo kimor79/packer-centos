@@ -1,7 +1,7 @@
 AWS Specific
 ==========
 
-The following have been added to the image (in addition to those listed in in [README.md](README.md)):
+The following have been added to the image (in addition to those listed in [README.md](README.md)):
 
   * [Cloud-Init](http://cloudinit.readthedocs.org/en/latest/) is installed
     * The user *ec2-user* will be added with passwordless sudo and authorized_keys based on the AWS keypair configured at launch time

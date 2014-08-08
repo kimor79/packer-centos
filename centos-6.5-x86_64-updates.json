@@ -50,6 +50,30 @@
 				[ "modifyvm", "{{.Name}}", "--memory", "1024" ]
 			],
 			"vm_name": "packer-centos-6.5-x86_64-updates-vagrant-vbox-{{user `build_number`}}"
+		},
+		{
+			"boot_command": [
+				"<esc>",
+				"<wait>linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks-6.5-updates.cfg<enter>"
+			],
+			"boot_wait": "5s",
+			"disk_size": 8000,
+			"guest_os_type": "centos-64",
+			"http_directory": "./http",
+			"iso_checksum": "f21a71e8e31df73297bdd1ccd4a64a36831284bd",
+			"iso_checksum_type": "sha1",
+			"iso_url": "http://centos.mirror.facebook.net/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
+			"name": "vmware4vagrant",
+			"output_directory": "/tmp/packer-centos-6.5-x86_64-updates-vagrant-vmware.build-{{user `build_number`}}",
+			"ssh_password": "root",
+			"ssh_username": "root",
+			"shutdown_command": "shutdown -h now",
+			"tools_upload_flavor": "linux",
+			"type": "vmware-iso",
+			"vm_name": "packer-centos-6.5-x86_64-updates-vagrant-vmware-{{user `build_number`}}",
+			"vmx_data": {
+				"memsize": "1024"
+			}
 		}
 	],
 
@@ -72,7 +96,7 @@
 			"type": "shell"
 		},
 		{
-			"only": [ "vbox4vagrant" ],
+			"only": [ "vbox4vagrant", "vmware4vagrant" ],
 			"script": "provisioners/vagrant",
 			"type": "shell"
 		},
@@ -96,7 +120,7 @@
 			"type": "shell"
 		},
 		{
-			"except": [ "vbox4vagrant" ],
+			"except": [ "vbox4vagrant", "vmware4vagrant" ],
 			"script": "provisioners/lock_root",
 			"type": "shell"
 		},
@@ -110,6 +134,11 @@
 		{
 			"only": [ "vbox4vagrant" ],
 			"output": "/tmp/packer-centos-6.5-x86_64-updates-vagrant-vbox-{{user `build_number`}}.box",
+			"type": "vagrant"
+		},
+		{
+			"only": [ "vmware4vagrant" ],
+			"output": "/tmp/packer-centos-6.5-x86_64-updates-vagrant-vmware-{{user `build_number`}}.box",
 			"type": "vagrant"
 		}
 	]

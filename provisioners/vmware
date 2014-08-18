@@ -1,0 +1,12 @@
+#!/bin/sh
+
+yum install -y perl
+
+mkdir /mnt/vmwareguest
+mount -t iso9660 -o loop /root/linux.iso /mnt/vmwareguest
+
+cd /tmp/ && tar -zxf /mnt/vmwareguest/VMwareTools-*.gz
+/tmp/vmware-tools-distrib/vmware-install.pl --default
+
+umount /mnt/vmwareguest
+rm -fr /mnt/vmwareguest /root/linux.iso /tmp/vmware-tools-distrib

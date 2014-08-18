@@ -22,6 +22,8 @@ Available builders:
   * [vbox4ami](AWS.md) - build an image (from scratch) suitable for AWS
   * [vbox4vagrant](VAGRANT.md) - build a Vagrant box for VirtualBox
   * [vbox4vbox](VIRTUALBOX.md) - build a box for VirtualBox
+  * [vmware4vagrant](VAGRANT.md) - build a Vagrant box for VMware
+  * [vmware4vmware](VMWARE.md) - build a box for VMware
 
 Vagrant boxes:
 

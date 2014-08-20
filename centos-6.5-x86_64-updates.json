@@ -1,6 +1,7 @@
 {
 	"variables": {
-		"build_number": "{{timestamp}}"
+		"build_number": "{{timestamp}}",
+		"tmpdir": "/tmp"
 	},
 
 	"builders": [
@@ -18,7 +19,7 @@
 			"iso_checksum_type": "sha1",
 			"iso_url": "http://centos.mirror.facebook.net/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
 			"name": "vbox4ami",
-			"output_directory": "/tmp/packer-centos-6.5-x86_64-updates-AMI-{{user `build_number`}}",
+			"output_directory": "{{user `tmpdir`}}/packer-centos-6.5-x86_64-updates-AMI-{{user `build_number`}}",
 			"ssh_password": "root",
 			"ssh_username": "root",
 			"shutdown_command": "shutdown -h now",
@@ -41,7 +42,7 @@
 			"iso_checksum_type": "sha1",
 			"iso_url": "http://centos.mirror.facebook.net/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
 			"name": "vbox4vagrant",
-			"output_directory": "/tmp/packer-centos-6.5-x86_64-updates-vagrant-vbox.build-{{user `build_number`}}",
+			"output_directory": "{{user `tmpdir`}}/packer-centos-6.5-x86_64-updates-vagrant-vbox.build-{{user `build_number`}}",
 			"ssh_password": "root",
 			"ssh_username": "root",
 			"shutdown_command": "shutdown -h now",
@@ -64,7 +65,7 @@
 			"iso_checksum_type": "sha1",
 			"iso_url": "http://centos.mirror.facebook.net/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
 			"name": "vbox4vbox",
-			"output_directory": "/tmp/packer-centos-6.5-x86_64-updates-vbox.build-{{user `build_number`}}",
+			"output_directory": "{{user `tmpdir`}}/packer-centos-6.5-x86_64-updates-vbox.build-{{user `build_number`}}",
 			"ssh_password": "root",
 			"ssh_username": "root",
 			"shutdown_command": "shutdown -h now",
@@ -87,7 +88,7 @@
 			"iso_checksum_type": "sha1",
 			"iso_url": "http://centos.mirror.facebook.net/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
 			"name": "vmware4vagrant",
-			"output_directory": "/tmp/packer-centos-6.5-x86_64-updates-vagrant-vmware.build-{{user `build_number`}}",
+			"output_directory": "{{user `tmpdir`}}/packer-centos-6.5-x86_64-updates-vagrant-vmware.build-{{user `build_number`}}",
 			"ssh_password": "root",
 			"ssh_username": "root",
 			"shutdown_command": "shutdown -h now",
@@ -111,7 +112,7 @@
 			"iso_checksum_type": "sha1",
 			"iso_url": "http://centos.mirror.facebook.net/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
 			"name": "vmware4vmware",
-			"output_directory": "/tmp/packer-centos-6.5-x86_64-updates-vmware.build-{{user `build_number`}}",
+			"output_directory": "{{user `tmpdir`}}/packer-centos-6.5-x86_64-updates-vmware.build-{{user `build_number`}}",
 			"ssh_password": "root",
 			"ssh_username": "root",
 			"shutdown_command": "shutdown -h now",
@@ -190,12 +191,12 @@
 	"post-processors": [
 		{
 			"only": [ "vbox4vagrant" ],
-			"output": "/tmp/packer-centos-6.5-x86_64-updates-vagrant-vbox-{{user `build_number`}}.box",
+			"output": "{{user `tmpdir`}}/packer-centos-6.5-x86_64-updates-vagrant-vbox-{{user `build_number`}}.box",
 			"type": "vagrant"
 		},
 		{
 			"only": [ "vmware4vagrant" ],
-			"output": "/tmp/packer-centos-6.5-x86_64-updates-vagrant-vmware-{{user `build_number`}}.box",
+			"output": "{{user `tmpdir`}}/packer-centos-6.5-x86_64-updates-vagrant-vmware-{{user `build_number`}}.box",
 			"type": "vagrant"
 		}
 	]

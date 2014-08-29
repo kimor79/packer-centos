@@ -1,7 +1,7 @@
 Vagrant Specific
 ================
 
-The following have been added to the image (in addition to those listed in in [README.md](README.md)):
+The following have been added to the image (in addition to those listed in [README.md](README.md)):
 
   * For VirtualBox: dkms, gcc, perl, and VBoxGuestAdditions
   * For VMware: VMware Tools

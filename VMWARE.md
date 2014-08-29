@@ -1,7 +1,7 @@
 VMware Specific
 ===================
 
-The following have been added to the image (in addition to those listed in in [README.md](README.md)):
+The following have been added to the image (in addition to those listed in [README.md](README.md)):
 
   * perl and VMware Tools are installed
   * Root password is set to *root*

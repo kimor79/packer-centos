@@ -9,10 +9,10 @@ The following have been added to the image (in addition to those listed in [READ
 
 To build a AMI (**2014-05-09: WIP**):
 
-  1. `rm -fr /tmp/packer-centos-6.5-x86_64-updates-AMI-*`
-  1. `packer build --only=vbox4ami centos-6.5-x86_64-updates.json`
-  1. `VBoxManage clonehd /tmp/packer-centos-6.5-x86_64-updates-AMI-*/*.vmdk /tmp/packer-centos-6.5-x86_64-updates.img --format raw`
-  1. `ec2-import-volume -f raw [options] /tmp/packer-centos-6.5-x86_64-updates.img`
+  1. `rm -fr /tmp/packer-centos-6.6-x86_64-updates-AMI-*`
+  1. `packer build --only=vbox4ami centos-6.6-x86_64-updates.json`
+  1. `VBoxManage clonehd /tmp/packer-centos-6.6-x86_64-updates-AMI-*/*.vmdk /tmp/packer-centos-6.6-x86_64-updates.img --format raw`
+  1. `ec2-import-volume -f raw [options] /tmp/packer-centos-6.6-x86_64-updates.img`
   1. Launch 2 amzn-linux instances
      1. Stop one, detach drive
   1. Attach newly created volume to running instance (xvdf)

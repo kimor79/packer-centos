@@ -10,21 +10,17 @@ The following have been added to the image (in addition to those listed in [READ
 
 To build a VirtualBox Vagrant box:
 
-  1. `rm -f /tmp/packer-centos-6.5-x86_64-updates-vagrant-vbox-*`
-  1. `packer build --only=vbox4vagrant centos-6.5-x86_64-updates.json`
-  1. `vagrant box add --force packer-centos-6.5-x86_64-updates-vagrant-vbox /tmp/packer-centos-6.5-x86_64-updates-vagrant-vbox-*.box`
+  1. `rm -f /tmp/packer-centos-6.6-x86_64-updates-vagrant-vbox-*`
+  1. `packer build --only=vbox4vagrant centos-6.6-x86_64-updates.json`
+  1. `vagrant box add --force packer-centos-6.6-x86_64-updates-vagrant-vbox /tmp/packer-centos-6.6-x86_64-updates-vagrant-vbox-*.box`
   1. `vagrant up`
   1. Smoke test (e.g., `vagrant ssh` and look around)
 
 To build a VMware Vagrant box:
 
-  1. `rm -f /tmp/packer-centos-6.5-x86_64-updates-vagrant-vmware-*`
-  1. `packer build --only=vmware4vagrant centos-6.5-x86_64-updates.json`
-  1. `vagrant box add --force packer-centos-6.5-x86_64-updates-vagrant-vmware /tmp/packer-centos-6.5-x86_64-updates-vagrant-vmware-*.box`
+  1. `rm -f /tmp/packer-centos-6.6-x86_64-updates-vagrant-vmware-*`
+  1. `packer build --only=vmware4vagrant centos-6.6-x86_64-updates.json`
+  1. `vagrant box add --force packer-centos-6.6-x86_64-updates-vagrant-vmware /tmp/packer-centos-6.6-x86_64-updates-vagrant-vmware-*.box`
   1. Get Vagrant/VMware license (https://www.vagrantup.com/vmware)
   1. `vagrant up`
   1. Smoke test (e.g., `vagrant ssh` and look around)
-
-Vagrant boxes:
-
-  * https://vagrantcloud.com/igromik/centos-6.5-x86_64-updates

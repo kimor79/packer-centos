@@ -15,7 +15,7 @@
 				"<wait>linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks-updates.cfg<enter>"
 			],
 			"boot_wait": "5s",
-			"disk_size": 8000,
+			"disk_size": 10000,
 			"guest_additions_mode": "disable",
 			"guest_os_type": "RedHat_64",
 			"http_directory": "./http",
@@ -39,7 +39,7 @@
 				"<wait>linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks-updates.cfg<enter>"
 			],
 			"boot_wait": "5s",
-			"disk_size": 8000,
+			"disk_size": 10000,
 			"guest_os_type": "RedHat_64",
 			"http_directory": "./http",
 			"iso_checksum": "{{user `iso_checksum`}}",
@@ -62,7 +62,7 @@
 				"<wait>linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks-updates.cfg<enter>"
 			],
 			"boot_wait": "5s",
-			"disk_size": 8000,
+			"disk_size": 10000,
 			"guest_os_type": "RedHat_64",
 			"http_directory": "./http",
 			"iso_checksum": "{{user `iso_checksum`}}",
@@ -85,7 +85,7 @@
 				"<wait>linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks-updates.cfg<enter>"
 			],
 			"boot_wait": "5s",
-			"disk_size": 8000,
+			"disk_size": 10000,
 			"guest_os_type": "centos-64",
 			"http_directory": "./http",
 			"iso_checksum": "{{user `iso_checksum`}}",
@@ -109,7 +109,7 @@
 				"<wait>linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks-updates.cfg<enter>"
 			],
 			"boot_wait": "5s",
-			"disk_size": 8000,
+			"disk_size": 10000,
 			"guest_os_type": "centos-64",
 			"http_directory": "./http",
 			"iso_checksum": "{{user `iso_checksum`}}",

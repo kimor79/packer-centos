@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo 'root:*LOCKED*' | chpasswd -e
+echo "root:${PACKER_ROOT_HASH}" | chpasswd -e

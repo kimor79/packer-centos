@@ -4,6 +4,7 @@ useradd vagrant
 
 cat > /etc/sudoers.d/vagrant <<'EOF'
 Defaults:vagrant !requiretty
+Defaults:vagrant secure_path=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
 vagrant ALL=(ALL) NOPASSWD: ALL
 EOF
 

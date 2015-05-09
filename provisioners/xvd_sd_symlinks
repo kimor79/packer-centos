@@ -23,6 +23,6 @@ case ${1} in
 esac
 EOF
 
-chmod 0755 /sbin/xvd_sd_symlinks
+chmod 0755 /sbin/xvd_sd_symlink
 
 echo 'KERNEL=="xvd*", PROGRAM="/sbin/xvd_sd_symlink %k", SYMLINK+="%c"' > /etc/udev/rules.d/50-xvd-sd-symlinks.rules

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo 'RES_OPTIONS="${RES_OPTIONS} single-request-reopen"' >> /etc/sysconfig/network

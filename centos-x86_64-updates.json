@@ -180,6 +180,11 @@
 			"type": "shell"
 		},
 		{
+			"only": [ "vbox4vagrant" ],
+			"script": "provisioners/resolv.conf-options-single-request-reopen",
+			"type": "shell"
+		},
+		{
 			"only": [ "vmware4vagrant", "vmware4vmware" ],
 			"script": "provisioners/vmware",
 			"type": "shell"

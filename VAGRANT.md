@@ -7,6 +7,7 @@ The following have been added to the image (in addition to those listed in [READ
   * For VMware: VMware Tools
   * Root password is set to *vagrant*
   * The user *vagrant* has been added with password *vagrant* and authorized_keys from https://github.com/mitchellh/vagrant/raw/master/keys/vagrant.pub
+  * single-request-reopen is added to resolv.conf
 
 To build a VirtualBox Vagrant box:
 

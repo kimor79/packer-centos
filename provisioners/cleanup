@@ -1,5 +1,6 @@
 #!/bin/sh
 
+yum clean all
 service rsyslog stop
 service crond stop
 rm -f /etc/ssh/ssh_host_*

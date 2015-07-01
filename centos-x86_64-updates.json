@@ -184,6 +184,11 @@
 			"type": "shell"
 		},
 		{
+			"only": [ "vbox4ami" ],
+			"script": "provisioners/xvd_sd_symlinks",
+			"type": "shell"
+		},
+		{
 			"only": [ "vbox4vagrant", "vbox4vbox" ],
 			"script": "provisioners/virtualbox",
 			"type": "shell"

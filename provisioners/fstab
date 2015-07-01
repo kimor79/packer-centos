@@ -1,7 +1,10 @@
 #!/bin/sh
 
-cat > /etc/fstab <<'EOF'
-/dev/xvda1              /                       ext4    defaults        1 1
+bootdev="${PACKER_BOOT_DEVICE:-xvda}"
+
+cat > /etc/fstab <<EOF
+/dev/${bootdev}2              /                       ext4    defaults,noatime        1 1
+/dev/${bootdev}1              swap                    swap    defaults        0 0
 tmpfs                   /dev/shm                tmpfs   defaults        0 0
 devpts                  /dev/pts                devpts  gid=5,mode=620  0 0
 sysfs                   /sys                    sysfs   defaults        0 0

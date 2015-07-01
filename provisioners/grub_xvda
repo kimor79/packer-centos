@@ -1,0 +1,17 @@
+#!/bin/sh
+
+mykern="$(uname -r)"
+myos=CentOS
+
+rm /boot/grub/device.map
+
+cat > /boot/grub/grub.conf <<EOF
+default=0
+timeout=1
+hiddenmenu
+
+title ${myos} (${mykern})
+	root (hd0,1)
+	kernel /boot/vmlinuz-${mykern} ro root=/dev/xvda2 xen_blkfront.sda_is_xvda=1 console=ttyS0
+	initrd /boot/initramfs-${mykern}.img
+EOF

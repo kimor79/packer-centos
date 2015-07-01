@@ -175,10 +175,13 @@
 		},
 		{
 			"only": [ "vbox4ami" ],
-			"script": "provisioners/grub",
+			"script": "provisioners/grub_xvda",
 			"type": "shell"
 		},
 		{
+			"environment_vars": [
+				"PACKER_BOOT_DEVICE=xvda"
+			],
 			"only": [ "vbox4ami" ],
 			"script": "provisioners/fstab",
 			"type": "shell"

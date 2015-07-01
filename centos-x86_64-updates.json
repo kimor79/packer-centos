@@ -140,6 +140,14 @@
 			"type": "shell"
 		},
 		{
+			"except": [
+				"vbox4vagrant",
+				"vmware4vagrant"
+			],
+			"script": "provisioners/disable_rhgb",
+			"type": "shell"
+		},
+		{
 			"script": "provisioners/ntp",
 			"type": "shell"
 		},

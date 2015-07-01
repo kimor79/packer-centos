@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sed -i \
+	-e 's/rhgb//g' \
+	/boot/grub/grub.conf

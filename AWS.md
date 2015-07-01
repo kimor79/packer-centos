@@ -8,7 +8,7 @@ The following have been added to the image (in addition to those listed in [READ
     * If a drive is attached to /dev/sdb it will be mounted as /mnt/ephemeral0
   * Root password is locked
 
-To build a AMI:
+To build an AMI:
 
   1. `rm -fr /tmp/packer-centos-6.6-x86_64-updates-AMI-*`
   1. `packer build --only=vbox4ami centos-x86_64-updates.json`

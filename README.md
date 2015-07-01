@@ -22,7 +22,7 @@ Here are the additions to the base install:
 
 Additional options can be included by specifying command line variables:
 
-  * To download the iso from a differenet mirror: `-var iso_url=http://...`
+  * To download the iso from a different mirror: `-var iso_url=http://...`
   * To specify a different CentOS version: `-var centos_version=X.Y`
     * You will most likely also need to pass iso_checksum and iso_url
   * To set root's password hash: `-var root_hash='encrypted_string'`

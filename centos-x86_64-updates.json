@@ -6,7 +6,7 @@
 		"iso_checksum_type": "sha256",
 		"iso_url": "http://centos.mirror.facebook.net/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
 		"root_hash": "*LOCKED*",
-		"tmpdir": "/tmp",
+		"tmpdir": "/tmp"
 	},
 
 	"builders": [

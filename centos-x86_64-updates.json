@@ -234,12 +234,12 @@
 	"post-processors": [
 		{
 			"only": [ "vbox4vagrant" ],
-			"output": "{{user `tmpdir`}}/packer-centos-{{user `centos_version`}}-x86_64-updates-{{user `puppet_server`}}-vagrant-vbox-{{user `build_number`}}.box",
+			"output": "{{user `tmpdir`}}/packer-centos-{{user `centos_version`}}-x86_64-updates-vagrant-vbox-{{user `build_number`}}.box",
 			"type": "vagrant"
 		},
 		{
 			"only": [ "vmware4vagrant" ],
-			"output": "{{user `tmpdir`}}/packer-centos-{{user `centos_version`}}-x86_64-updates-{{user `puppet_server`}}-vagrant-vmware-{{user `build_number`}}.box",
+			"output": "{{user `tmpdir`}}/packer-centos-{{user `centos_version`}}-x86_64-updates-vagrant-vmware-{{user `build_number`}}.box",
 			"type": "vagrant"
 		}
 	]

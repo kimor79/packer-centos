@@ -7,11 +7,11 @@ Available templates:
 
   * [CentOS x86_64 minimal with updates](centos-x86_64-updates.json)
 
-The version of CentOS to install is defined by the `centos_version` parameter in the above templates. As of 2015-01-30 the default version is *6.6*.
+The version of CentOS to install is defined by the `centos_version` parameter in the above templates. As of 2015-11-13 the default version is *6.7*.
 
 Here are the additions to the base install:
 
-  * yum --releasever=6.6 update
+  * yum --releasever=6.7 update
   * kernel-devel and kernel-headers are installed
   * EPEL repo is enabled
   * NTP is installed and enabled

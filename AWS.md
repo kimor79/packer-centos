@@ -10,10 +10,10 @@ The following have been added to the image (in addition to those listed in [READ
 
 To build an AMI:
 
-  1. `rm -fr /tmp/packer-centos-6.6-x86_64-updates-AMI-*`
+  1. `rm -fr /tmp/packer-centos-6.7-x86_64-updates-AMI-*`
   1. `packer build --only=vbox4ami centos-x86_64-updates.json`
-  1. `VBoxManage clonehd /tmp/packer-centos-6.6-x86_64-updates-AMI-*/*.vmdk /tmp/packer-centos-6.6-x86_64-updates.img --format raw`
-  1. `ec2-import-volume -f raw [options] /tmp/packer-centos-6.6-x86_64-updates.img`
+  1. `VBoxManage clonehd /tmp/packer-centos-6.7-x86_64-updates-AMI-*/*.vmdk /tmp/packer-centos-6.7-x86_64-updates.img --format raw`
+  1. `ec2-import-volume -f raw [options] /tmp/packer-centos-6.7-x86_64-updates.img`
   1. Launch an amzn-linux instance
   1. Attach newly created volume to running instance (xvdf)
   1. Install grub

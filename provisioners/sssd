@@ -1,0 +1,22 @@
+#!/bin/sh
+
+cloud_cfg=/etc/cloud/cloud.cfg
+sssd_conf=/etc/sssd/sssd.conf
+sssd_upload=/tmp/sssd.conf-packer
+
+if [ ! -s "${sssd_upload}" ]; then
+	rm -f "${sssd_upload}"
+	exit 0
+fi
+
+yum install -y sssd
+chkconfig --levels 2345 sssd on
+
+install -g 0 -m 0600 -o 0 "${sssd_upload}" "${sssd_conf}"
+rm -f "${sssd_upload}"
+
+authconfig --enablesssd --enablemkhomedir --enablesssdauth --update
+
+if [ -s "${cloud_cfg}" ]; then
+	echo 'ssh_pwauth: 1' >> "${cloud_cfg}"
+fi

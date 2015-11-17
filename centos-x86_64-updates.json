@@ -7,7 +7,7 @@
 		"iso_url": "http://mirror.rackspace.com/CentOS/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso",
 		"root_hash": "*LOCKED*",
 		"ssh_timeout": "10m",
-		"sssd_conf": "files/sssd.conf",
+		"sssd_conf": "files/emptyfile",
 		"tmpdir": "/tmp"
 	},
 

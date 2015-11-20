@@ -7,11 +7,11 @@ Available templates:
 
   * [CentOS x86_64 minimal with updates](centos-x86_64-updates.json)
 
-The version of CentOS to install is defined by the `centos_version` parameter in the above templates. As of 2015-11-13 the default version is *6.7*.
+The version of CentOS to install is defined by the `centos_version` parameter in the above templates. As of 2015-11-19 the default version is *7.1.1503*.
 
 Here are the additions to the base install:
 
-  * yum --releasever=6.7 update
+  * yum --releasever=7.1.1503 update
   * kernel-devel and kernel-headers are installed
   * EPEL repo is enabled
   * NTP is installed and enabled
@@ -19,6 +19,7 @@ Here are the additions to the base install:
   * SELinux is disabled
   * *UseDNS* and *PermitRootLogin* are both set to *no* in /etc/ssh/sshd_config
   * IPTables is open
+  * For CentOS >=7, predictable interface names have been disabled (retaining the pre-7 behavior of ethN interface names)
 
 Additional options can be included by specifying command line variables:
 

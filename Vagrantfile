@@ -10,8 +10,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "packer-centos-6.7-x86_64-updates-vagrant-vbox"
-  #config.vm.box = "packer-centos-6.7-x86_64-updates-vagrant-vmware"
+  config.vm.box = "packer-centos-7.1.1503-x86_64-updates-vagrant-vbox"
+  #config.vm.box = "packer-centos-7.1.1503-x86_64-updates-vagrant-vmware"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

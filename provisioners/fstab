@@ -1,9 +1,10 @@
 #!/bin/sh
 
 bootdev="${PACKER_BOOT_DEVICE:-xvda}"
+fstype="$(blkid -o value -s TYPE /dev/sda2)"
 
 cat > /etc/fstab <<EOF
-/dev/${bootdev}2              /                       ext4    defaults,noatime        1 1
+/dev/${bootdev}2              /                       ${fstype}    defaults,noatime        1 1
 /dev/${bootdev}1              swap                    swap    defaults        0 0
 tmpfs                   /dev/shm                tmpfs   defaults        0 0
 devpts                  /dev/pts                devpts  gid=5,mode=620  0 0

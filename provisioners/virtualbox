@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yum install -y dkms gcc perl
+yum install -y bzip2 dkms gcc perl
 
 mkdir /mnt/vboxguest
 mount -t iso9660 -o loop /root/VBoxGuestAdditions.iso /mnt/vboxguest

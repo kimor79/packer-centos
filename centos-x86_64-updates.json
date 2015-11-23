@@ -191,6 +191,11 @@
 			"type": "shell"
 		},
 		{
+			"only": [ "vbox4ami" ],
+			"script": "provisioners/serial_console",
+			"type": "shell"
+		},
+		{
 			"environment_vars": [
 				"PACKER_BOOT_DEVICE=xvda"
 			],

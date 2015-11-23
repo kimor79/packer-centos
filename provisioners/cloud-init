@@ -7,7 +7,7 @@ yum install -y cloud-init
 cat >> /etc/cloud/cloud.cfg <<'EOF'
 datasource_list: [ Ec2, None ]
 mounts:
- - [ /dev/xvdb, /mnt/ephemeral0, ext4, "defaults,noatime", "0", "2" ]
+ - [ /dev/xvdb, /mnt/ephemeral0, ext4, "defaults,noatime,nodiratime,nofail", "0", "2" ]
 EOF
 
 mkdir -p /mnt/ephemeral0

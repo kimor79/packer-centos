@@ -1,0 +1,6 @@
+{
+	"centos_version": "7.1.1503",
+	"iso_checksum": "7cf1ac8da13f54d6be41e3ccf228dc5bb35792f515642755ff4780d5714d4278",
+	"iso_checksum_type": "sha256",
+	"iso_url": "http://mirrors.sonic.net/centos/7.1.1503/isos/x86_64/CentOS-7-x86_64-Minimal-1503-01.iso"
+}

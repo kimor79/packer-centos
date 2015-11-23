@@ -1,0 +1,11 @@
+#!/bin/sh
+
+CENTOS_VERSION="${CENTOS_VERSON:-7.1.1503}"
+BUILD_TIMESTAMP="$(date +%s)"
+S3_BUCKET="${S3_BUCKET:-CHANGEME}"
+S3_PATH="${S3_PATH:-}" # Include a trailing / if you set this
+
+packer build --only=vbox4ami --var build_number="${BUILD_TIMESTAMP}" centos-x86_64-updates.json
+VBoxManage clonehd "/tmp/packer-centos-${CENTOS_VERSION}-x86_64-updates-AMI-${BUILD_TIMESTAMP}/packer-centos-${CENTOS_VERSION}-x86_64-updates-AMI-${BUILD_TIMESTAMP}-disk1.vmdk" "/tmp/packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}.vhd" --format vhd
+aws s3 cp "/tmp/packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}.vhd" "s3://${S3_BUCKET}/${S3_PATH}packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}.vhd"
+aws ec2 import-image --cli-input-json "{\"Description\": \"packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}\",\"DiskContainers\": [{\"Description\": \"packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}\",\"UserBucket\": {\"S3Bucket\": \"${S3_BUCKET}\",\"S3Key\": \"${S3_PATH}packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}.vhd\"}}]}"

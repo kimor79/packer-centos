@@ -8,27 +8,16 @@ The following have been added to the image (in addition to those listed in [READ
     * If a drive is attached to /dev/sdb it will be mounted as /mnt/ephemeral0
   * Root password is locked
 
-To build an AMI:
+Steps to build an AMI (see [misc/build\_ami](misc/build\_ami) for an example script):
 
-  1. `rm -fr /tmp/packer-centos-6.7-x86_64-updates-AMI-*`
-  1. `packer build --only=vbox4ami centos-x86_64-updates.json`
-  1. `VBoxManage clonehd /tmp/packer-centos-6.7-x86_64-updates-AMI-*/*.vmdk /tmp/packer-centos-6.7-x86_64-updates.img --format raw`
-  1. `ec2-import-volume -f raw [options] /tmp/packer-centos-6.7-x86_64-updates.img`
-  1. Launch an amzn-linux instance
-  1. Attach newly created volume to running instance (xvdf)
-  1. Install grub
-```cat <<EOF | sudo grub --batch
-device (hd0) /dev/xvdf
-root (hd0,1)
-setup (hd0)
-EOF```
-  1. Create snapshot from volume
-  1. Create AMI from snapshot
-     * Virtualization type: HVM
-     * Root device name: /dev/xvda
-     * Instance store 0 as /dev/sdb
+  1. Run `packer build` with `--only=vbox4ami`
+  1. Use `VBoxManage clonehd` to convert the vmdk to vhd
+  1. Upload the vhd image to S3
+  1. Run `aws ec2 import-image` to convert the vhd image to an AMI
+  1. Wait for import to complete (`aws ec2 describe-import-image-tasks`)
+  1. Launch an EC2 instance with new AMI
+  1. Smoke test
 
 Notes:
 
-  * Make sure you have enough disk space to convert the disk image to raw.
-  * Tag/Name the EBS volume and snaphot so they are easier to find.
+  * During `packer build` several files (grub-related, fstab, etc) are set to use /dev/xvda. `aws ec2 import-image` however, modifies /boot/menu.lst and /etc/fstab to use the UUIDs of the partitions on the device.

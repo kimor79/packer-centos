@@ -1,7 +1,7 @@
 Building a CentOS image
 =======================
 
-This repo contains packer templates and related files to build a Centos image.
+This repo contains packer templates and related files to build a CentOS image.
 
 Available templates:
 

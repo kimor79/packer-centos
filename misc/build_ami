@@ -1,11 +1,68 @@
 #!/bin/sh
 
-CENTOS_VERSION="${CENTOS_VERSON:-7.1.1503}"
-BUILD_TIMESTAMP="$(date +%s)"
-S3_BUCKET="${S3_BUCKET:-CHANGEME}"
-S3_PATH="${S3_PATH:-}" # Include a trailing / if you set this
+set -eu
 
-packer build --only=vbox4ami --var build_number="${BUILD_TIMESTAMP}" centos-x86_64-updates.json
-VBoxManage clonehd "/tmp/packer-centos-${CENTOS_VERSION}-x86_64-updates-AMI-${BUILD_TIMESTAMP}/packer-centos-${CENTOS_VERSION}-x86_64-updates-AMI-${BUILD_TIMESTAMP}-disk1.vmdk" "/tmp/packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}.vhd" --format vhd
-aws s3 cp "/tmp/packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}.vhd" "s3://${S3_BUCKET}/${S3_PATH}packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}.vhd"
-aws ec2 import-image --cli-input-json "{\"Description\": \"packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}\",\"DiskContainers\": [{\"Description\": \"packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}\",\"UserBucket\": {\"S3Bucket\": \"${S3_BUCKET}\",\"S3Key\": \"${S3_PATH}packer-centos-${CENTOS_VERSION}-x86_64-updates-${BUILD_TIMESTAMP}.vhd\"}}]}"
+build_timestamp="$(date +%s)"
+centos_version='7.1.1503'
+packer_opts=''
+s3_bucket=''
+s3_prefix=''
+
+function usage {
+	cat <<EOF
+Usage: ${0##*/} -b s3_bucket [-d s3_prefix] [-p packer_options] [-v centos_version]
+
+  -b		The name of the S3 bucket. Required.
+  -d path	An optional prefix for the S3 key.
+  -p options	Additional packer options. Ex: '--var foo=bar --var bar=foo'
+  -v version	The version of CentOS to build. Default is ${centos_version}.
+
+EOF
+}
+
+while getopts "b:d:hp:v:" opt; do
+	case ${opt} in
+		b)
+			s3_bucket="${OPTARG}"
+		;;
+		d)
+			s3_prefix="${OPTARG}"
+		;;
+		h)
+			usage
+			exit 0
+		;;
+		p)
+			packer_opts="${OPTARG}"
+		;;
+		v)
+			centos_version="${OPTARG}"
+		;;
+		*)
+			echo
+			usage >&2
+			exit 1
+		;;
+	esac
+done
+
+shift $(( OPTIND - 1 ))
+
+if [ -z "${s3_bucket}" ]; then
+	usage >&2
+	exit 1
+fi
+
+if [ -z "${centos_version}" ]; then
+	echo 'CentOS version cannot be blank' >&2
+	exit 1
+fi
+
+if [ -n "${s3_prefix}" ]; then
+	s3_prefix="$(echo "${s3_prefix}" | sed -e '/[^/]$/s;$;/;')"
+fi
+
+packer build --only=vbox4ami --var build_number="${build_timestamp}" ${packer_opts} centos-x86_64-updates.json
+VBoxManage clonehd "/tmp/packer-centos-${centos_version}-x86_64-updates-AMI-${build_timestamp}/packer-centos-${centos_version}-x86_64-updates-AMI-${build_timestamp}-disk1.vmdk" "/tmp/packer-centos-${centos_version}-x86_64-updates-${build_timestamp}.vhd" --format vhd
+aws s3 cp "/tmp/packer-centos-${centos_version}-x86_64-updates-${build_timestamp}.vhd" "s3://${s3_bucket}/${s3_prefix}packer-centos-${centos_version}-x86_64-updates-${build_timestamp}.vhd"
+aws ec2 import-image --cli-input-json "{\"Description\": \"packer-centos-${centos_version}-x86_64-updates-${build_timestamp}\",\"DiskContainers\": [{\"Description\": \"packer-centos-${centos_version}-x86_64-updates-${build_timestamp}\",\"UserBucket\": {\"S3Bucket\": \"${s3_bucket}\",\"S3Key\": \"${s3_prefix}packer-centos-${centos_version}-x86_64-updates-${build_timestamp}.vhd\"}}]}"

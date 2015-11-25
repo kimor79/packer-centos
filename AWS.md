@@ -25,4 +25,4 @@ Notes:
     * Default kernel and ramdisk
     * HVM
     * Root device: /dev/xvda, delete on termination set to true
-    * Adding _instance store 1_ as /dev/sdb
+    * Adding _instance store 0_ as /dev/sdb

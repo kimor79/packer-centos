@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yum install -y cloud-init
+yum install -y cloud-init cloud-utils-growpart
 
 # Setup ephemerals
 

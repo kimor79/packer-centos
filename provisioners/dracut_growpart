@@ -1,0 +1,15 @@
+#!/bin/sh
+
+mykern="$(uname -r | cut -d. -f1,2)"
+
+threeeight="$(awk "BEGIN {
+	if ( ${mykern} > 3.8 ) print \"1\"
+}")"
+
+if [ -n "${threeeight}" ]; then
+	exit 0
+fi
+
+yum install -y dracut-modules-growroot
+
+dracut -f

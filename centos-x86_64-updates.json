@@ -173,6 +173,11 @@
 		},
 		{
 			"only": [ "vbox4ami" ],
+			"script": "provisioners/dracut_growpart",
+			"type": "shell"
+		},
+		{
+			"only": [ "vbox4ami" ],
 			"script": "provisioners/cloud-init",
 			"type": "shell"
 		},

@@ -21,3 +21,8 @@ Steps to build an AMI (see [misc/build\_ami](misc/build\_ami) for an example scr
 Notes:
 
   * During `packer build` several files (grub-related, fstab, etc) are set to use /dev/xvda. `aws ec2 import-image` however, modifies /boot/menu.lst and /etc/fstab to use the UUIDs of the partitions on the device.
+  * The newly created AMI will be named something like _import-image-adf213_ and most likely not have the desired configuration. A new AMI can be created by identifying the snapshot used and then creating an AMI based on that snapshot. Some common settings:
+    * Default kernel and ramdisk
+    * HVM
+    * Root device: /dev/xvda, delete on termination set to true
+    * Adding _instance store 1_ as /dev/sdb

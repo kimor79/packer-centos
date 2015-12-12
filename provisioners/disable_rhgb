@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 if [ -f /boot/grub/grub.conf ]; then
 	sed -i \
 		-e 's/rhgb//g' \

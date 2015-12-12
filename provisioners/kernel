@@ -1,3 +1,5 @@
 #!/bin/sh
 
+set -eu
+
 yum install -y kernel-devel kernel-headers

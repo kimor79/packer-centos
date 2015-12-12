@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 if [ -f /etc/default/grub ]; then
 	sed -i \
 		'/GRUB_CMDLINE_LINUX=/s/"$/ console=tty0 console=ttyS0,115200"/g' \

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 useradd vagrant
 
 cat > /etc/sudoers.d/vagrant <<'EOF'

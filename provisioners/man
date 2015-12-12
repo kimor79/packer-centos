@@ -1,3 +1,5 @@
 #!/bin/sh
 
+set -eu
+
 yum install -y man man-pages

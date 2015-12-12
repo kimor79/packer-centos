@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 if [ -f /boot/grub/grub.conf ]; then
 	mykern="$(uname -r)"
 	myos=CentOS

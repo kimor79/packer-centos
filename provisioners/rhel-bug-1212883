@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 # https://bugzilla.redhat.com/show_bug.cgi?id=1212883
 
 myrel="$(awk '{print $4}' /etc/centos-release | cut -d. -f1,2)"

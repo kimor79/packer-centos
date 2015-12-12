@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 # Set systemd to not use "predictable network interface names"
 # http://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/
 

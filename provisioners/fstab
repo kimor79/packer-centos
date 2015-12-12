@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 bootdev="${PACKER_BOOT_DEVICE:-xvda}"
 fstype="$(blkid -o value -s TYPE /dev/sda2)"
 

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 yum install -y perl
 
 mkdir /mnt/vmwareguest

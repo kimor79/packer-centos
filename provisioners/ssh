@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 sed -i \
 	-e '/^UseDNS/d' \
 	-e '/^PermitRootLogin/d' \

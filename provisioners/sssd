@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 cloud_cfg=/etc/cloud/cloud.cfg
 sssd_conf=/etc/sssd/sssd.conf
 sssd_upload=/tmp/sssd.conf-packer

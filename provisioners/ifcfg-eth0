@@ -7,7 +7,7 @@ set -eu
 
 if [ -f /etc/default/grub ]; then
 	sed -i \
-		-e '/GRUB_CMD_LINUX/s/"$/ net.ifnames=0 biosdevname=0"/g' \
+		-e '/GRUB_CMDLINE_LINUX/s/"$/ net.ifnames=0 biosdevname=0"/g' \
 		/etc/default/grub
 
 	grub2-mkconfig -o /boot/grub2/grub.cfg

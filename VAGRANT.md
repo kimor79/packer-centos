@@ -11,17 +11,17 @@ The following have been added to the image (in addition to those listed in [READ
 
 To build a VirtualBox Vagrant box:
 
-  1. `rm -f /tmp/packer-centos-7.2.1511-x86_64-updates-vagrant-vbox-*`
-  1. `packer build --only=vbox4vagrant centos-7.2.1511-x86_64-updates.json`
-  1. `vagrant box add --force packer-centos-7.2.1511-x86_64-updates-vagrant-vbox /tmp/packer-centos-7.2.1511-x86_64-updates-vagrant-vbox-*.box`
+  1. `rm -f /tmp/packer-centos-7.3.1611-x86_64-updates-vagrant-vbox-*`
+  1. `packer build --only=vbox4vagrant centos-7.3.1611-x86_64-updates.json`
+  1. `vagrant box add --force packer-centos-7.3.1611-x86_64-updates-vagrant-vbox /tmp/packer-centos-7.3.1611-x86_64-updates-vagrant-vbox-*.box`
   1. `vagrant up`
   1. Smoke test (e.g., `vagrant ssh` and look around)
 
 To build a VMware Vagrant box:
 
-  1. `rm -f /tmp/packer-centos-7.2.1511-x86_64-updates-vagrant-vmware-*`
-  1. `packer build --only=vmware4vagrant centos-7.2.1511-x86_64-updates.json`
-  1. `vagrant box add --force packer-centos-7.2.1511-x86_64-updates-vagrant-vmware /tmp/packer-centos-7.2.1511-x86_64-updates-vagrant-vmware-*.box`
+  1. `rm -f /tmp/packer-centos-7.3.1611-x86_64-updates-vagrant-vmware-*`
+  1. `packer build --only=vmware4vagrant centos-7.3.1611-x86_64-updates.json`
+  1. `vagrant box add --force packer-centos-7.3.1611-x86_64-updates-vagrant-vmware /tmp/packer-centos-7.3.1611-x86_64-updates-vagrant-vmware-*.box`
   1. Get Vagrant/VMware license (https://www.vagrantup.com/vmware)
   1. `vagrant up`
   1. Smoke test (e.g., `vagrant ssh` and look around)

@@ -3,7 +3,7 @@
 set -eu
 
 build_timestamp="$(date +%s)"
-centos_version='7.1.1503'
+centos_version='7.3.1611'
 packer_opts=''
 s3_bucket=''
 s3_prefix=''
